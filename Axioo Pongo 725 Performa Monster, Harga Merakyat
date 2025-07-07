@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulasan Interaktif: Axioo Pongo 725</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Tech (Slate, Zinc, Teal) -->
+    <!-- Application Structure Plan: A single-page narrative dashboard. The structure guides the user from the main value proposition (Hero Section) -> detailed proof of performance (Interactive Specs & Gaming Chart) -> price comparison (Marketplace Prices) -> transparent discussion of trade-offs (Design & Display) -> complete data (Full Specs) -> a clear final verdict. This narrative flow is more persuasive and easier to digest than a simple list of report sections, helping users understand *why* this laptop is a great deal. -->
+    <!-- Visualization & Content Choices: 
+        - Hero Key Specs: Goal: Inform. Method: HTML/CSS with Unicode icons for quick visual recognition. Justification: Fast, lightweight, and effective for highlighting the top 3 features.
+        - Dapur Pacu (Specs): Goal: Organize. Method: Interactive Tabs (Vanilla JS). Interaction: User clicks tabs for CPU, GPU, RAM/Storage. Justification: Prevents overwhelming the user with a long list of specs, allowing focused exploration.
+        - Gaming Performance: Goal: Compare. Method: Horizontal Bar Chart (Chart.js). Interaction: Hover over bars for tooltips with exact FPS and settings. Justification: Visually compelling proof of the laptop's capabilities; far more impactful than a static table for comparing performance.
+        - Marketplace Prices: Goal: Compare/Inform. Method: Responsive Grid with Cards. Justification: Allows users to quickly compare price points from major retailers and links them directly to check live prices.
+        - Konektivitas: Goal: Inform/Organize. Method: HTML/CSS Flexbox layout to visually map ports. Justification: More intuitive and quicker to scan than a simple text list.
+        - Pros & Cons: Goal: Compare. Method: Two-column HTML/CSS grid. Justification: Provides a clear, balanced, and quick-to-read final summary.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px; /* Base height for mobile */
+            max-height: 400px;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .tab-btn.active {
+            background-color: #0d9488; /* teal-600 */
+            color: white;
+            border-color: #0d9488;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+
+        <!-- Hero Section -->
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 mb-3 leading-tight">
+                Axioo Pongo 725
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-teal-700 font-semibold mb-8">
+                Performa Monster, Harga Merakyat
+            </p>
+            <div class="flex justify-center items-center space-x-6 md:space-x-10 text-slate-700">
+                <div class="text-center">
+                    <span class="text-3xl md:text-4xl">🚀</span>
+                    <p class="text-sm md:text-base font-semibold mt-2">Core i7-12650H</p>
+                </div>
+                <div class="text-center">
+                    <span class="text-3xl md:text-4xl">🎮</span>
+                    <p class="text-sm md:text-base font-semibold mt-2">NVIDIA RTX 2050</p>
+                </div>
+                <div class="text-center">
+                    <span class="text-3xl md:text-4xl">⚡</span>
+                    <p class="text-sm md:text-base font-semibold mt-2">Layar 144Hz</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- The Core Value -->
+        <section id="value" class="mb-12 md:mb-16 bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-4">Inti Penawaran</h2>
+            <p class="text-base md:text-lg text-slate-600 max-w-4xl mx-auto text-center">
+                Axioo Pongo 725 mendobrak pasar dengan menawarkan kombinasi spesifikasi kelas atas—yang biasanya ditemukan di laptop dengan harga jauh lebih mahal—dalam paket yang sangat terjangkau. Ini bukan soal menjadi yang termurah, tapi tentang memberikan rasio harga dan performa terbaik di kelasnya. Mari kita bedah lebih dalam.
+            </p>
+        </section>
+
+        <!-- Dapur Pacu -->
+        <section id="specs" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">Membongkar Dapur Pacu</h2>
+            <p class="text-base md:text-lg text-slate-600 max-w-3xl mx-auto text-center mb-8">
+                Inilah inti kekuatan Pongo 725. Setiap komponen dipilih untuk memberikan performa maksimal baik untuk gaming maupun produktivitas. Klik setiap tab untuk melihat detailnya.
+            </p>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center border-b border-slate-300 mb-6 space-x-2 md:space-x-4">
+                    <button class="tab-btn active py-2 px-3 sm:px-4 text-sm sm:text-base font-semibold border-b-2 border-transparent transition" data-tab="cpu">CPU</button>
+                    <button class="tab-btn py-2 px-3 sm:px-4 text-sm sm:text-base font-semibold border-b-2 border-transparent transition" data-tab="gpu">GPU</button>
+                    <button class="tab-btn py-2 px-3 sm:px-4 text-sm sm:text-base font-semibold border-b-2 border-transparent transition" data-tab="ram">RAM & Storage</button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md min-h-[180px]">
+                    <div id="cpu" class="tab-content active">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-teal-700">Intel® Core™ i7-12650H</h3>
+                        <p class="text-slate-600 text-sm md:text-base">Prosesor ini adalah otak dari Pongo 725. Dengan arsitektur hybrid yang menggabungkan 6 Performance-cores dan 4 Efficient-cores, ia mampu menangani tugas berat seperti rendering dan game AAA, sekaligus efisien untuk pekerjaan ringan. Kecepatan hingga 4.7 GHz memastikan semua aplikasi berjalan responsif.</p>
+                    </div>
+                    <div id="gpu" class="tab-content">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-teal-700">NVIDIA® GeForce® RTX 2050</h3>
+                        <p class="text-slate-600 text-sm md:text-base">"Senjata rahasia" dari laptop ini. Meskipun seri 20, GPU ini sudah berbasis arsitektur Ampere yang modern. Artinya, ia mendukung fitur krusial seperti <span class="font-semibold">Ray Tracing</span> untuk grafis realistis dan <span class="font-semibold">DLSS</span>, teknologi AI yang mampu meningkatkan FPS secara drastis di game yang mendukung, memberikan performa yang melampaui ekspektasi.</p>
+                    </div>
+                    <div id="ram" class="tab-content">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-teal-700">16GB DDR4 RAM & 512GB Gen4 SSD</h3>
+                        <p class="text-slate-600 text-sm md:text-base">Kombinasi RAM 16GB sudah sangat cukup untuk multitasking dan gaming modern. Penyimpanan NVMe PCIe Gen4 SSD memastikan waktu loading game dan booting sistem operasi secepat kilat. Hebatnya lagi, Axioo menyediakan kemudahan upgrade dengan slot RAM dan M.2 tambahan yang kosong.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gaming Performance -->
+        <section id="gaming" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">Uji Performa Gaming</h2>
+            <p class="text-base md:text-lg text-slate-600 max-w-3xl mx-auto text-center mb-8">
+                Angka di atas kertas tidak berarti tanpa bukti nyata. Lihat bagaimana Pongo 725 menangani beberapa game terpopuler pada resolusi FHD (1920x1080). Arahkan kursor ke bar untuk detail.
+            </p>
+            <div class="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="gamingChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketplace Prices -->
+        <section id="harga" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">Perbandingan Harga di Marketplace</h2>
+            <p class="text-base md:text-lg text-slate-600 max-w-3xl mx-auto text-center mb-8">
+                Harga adalah faktor kunci dari Pongo 725. Berikut adalah perkiraan harga di beberapa marketplace populer di Indonesia. Harga dapat berubah sewaktu-waktu.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Tokopedia Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-green-500 flex flex-col">
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Tokopedia</h3>
+                    <p class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rp 10.249.000</p>
+                    <p class="text-slate-500 text-sm mb-4 flex-grow">Harga dapat bervariasi tergantung promo dan penjual.</p>
+                    <a href="https://www.tokopedia.com/search?q=Axioo%20Pongo%20725" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                        Cek Harga
+                    </a>
+                </div>
+                <!-- Shopee Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-orange-500 flex flex-col">
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Shopee</h3>
+                    <p class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rp 10.499.000</p>
+                    <p class="text-slate-500 text-sm mb-4 flex-grow">Seringkali tersedia voucher cashback atau gratis ongkir.</p>
+                    <a href="https://shopee.co.id/search?keyword=Axioo%20Pongo%20725" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors">
+                        Cek Harga
+                    </a>
+                </div>
+                <!-- Blibli Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-500 flex flex-col">
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Blibli</h3>
+                    <p class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rp 10.749.000</p>
+                    <p class="text-slate-500 text-sm mb-4 flex-grow">Tersedia opsi cicilan dan jaminan produk original.</p>
+                    <a href="https://www.blibli.com/cari?s=Axioo%20Pongo%20725" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                        Cek Harga
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Compromises -->
+        <section id="compromises" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">Kompromi yang Cerdas</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Desain & Material</h3>
+                    <p class="text-slate-600 text-sm md:text-base">Untuk menekan harga, Axioo menggunakan sasis polikarbonat. Meskipun tidak terasa semewah metal, build quality-nya tetap kokoh. Desainnya yang "kalem" dan tidak agresif justru menjadi nilai plus bagi pengguna yang tidak ingin terlalu mencolok, menjadikannya cocok untuk berbagai lingkungan, dari ruang kelas hingga kantor.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Kualitas Layar</h3>
+                    <p class="text-slate-600 text-sm md:text-base">Fokus utama layar ini adalah kecepatan dengan refresh rate 144Hz, memberikan keunggulan visual dalam game. Namun, untuk akurasi warna, panel ini berada di level standar. Cukup memuaskan untuk gaming dan hiburan, tapi mungkin kurang ideal untuk desainer grafis profesional yang membutuhkan gamut warna sRGB 100%.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Full Specs -->
+        <section id="full-specs" class="mb-12 md:mb-16">
+             <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">Spesifikasi Lengkap & Konektivitas</h2>
+             <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Konektivitas Port</h3>
+                    <ul class="space-y-2 text-slate-700 text-sm md:text-base">
+                        <li class="flex items-center"><span class="w-6 h-6 bg-teal-600 text-white text-xs flex items-center justify-center rounded-full mr-3">C</span> 1x USB 3.2 Gen 2 Type-C (with DisplayPort)</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-500 text-white text-xs flex items-center justify-center rounded-full mr-3">A</span> 2x USB 3.2 Gen 1 Type-A</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-400 text-white text-xs flex items-center justify-center rounded-full mr-3">A</span> 1x USB 2.0 Type-A</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-500 text-white text-xs flex items-center justify-center rounded-full mr-3">🔗</span> 1x HDMI & 1x Mini DisplayPort 1.4</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-500 text-white text-xs flex items-center justify-center rounded-full mr-3">🌐</span> 1x RJ-45 LAN Port</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-500 text-white text-xs flex items-center justify-center rounded-full mr-3">🎧</span> 1x Audio Combo Jack</li>
+                        <li class="flex items-center"><span class="w-6 h-6 bg-slate-500 text-white text-xs flex items-center justify-center rounded-full mr-3">💾</span> 1x MicroSD Card Reader</li>
+                    </ul>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Lainnya</h3>
+                    <ul class="space-y-2 text-slate-700 text-sm md:text-base">
+                        <li><span class="font-semibold w-24 inline-block">Berat:</span> 1.99 kg</li>
+                        <li><span class="font-semibold w-24 inline-block">Baterai:</span> 3-4 Jam (Penggunaan Ringan)</li>
+                        <li><span class="font-semibold w-24 inline-block">Nirkabel:</span> Wi-Fi 6 & Bluetooth 5.2</li>
+                        <li><span class="font-semibold w-24 inline-block">Keyboard:</span> Full-size dengan Backlight Putih</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verdict -->
+        <section id="verdict" class="bg-slate-800 text-white p-8 md:p-12 rounded-2xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Putusan Akhir: Untuk Siapa Laptop Ini?</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-green-400 mb-3">Kelebihan (Pros)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm md:text-base">
+                        <li>Rasio Harga/Performa luar biasa</li>
+                        <li>CPU Core i7 seri H yang sangat kencang</li>
+                        <li>GPU RTX dengan dukungan DLSS</li>
+                        <li>Layar 144Hz yang mulus untuk gaming</li>
+                        <li>Opsi upgrade RAM & SSD sangat mudah</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-amber-400 mb-3">Kekurangan (Cons)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm md:text-base">
+                        <li>Build quality polikarbonat</li>
+                        <li>Akurasi warna layar standar</li>
+                        <li>Daya tahan baterai rata-rata</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-base md:text-lg text-slate-300 max-w-4xl mx-auto text-center">
+                Jika Anda seorang gamer, pelajar, atau mahasiswa dengan dana terbatas namun mendambakan performa tinggi untuk memainkan semua game terbaru, Axioo Pongo 725 adalah jawaban yang sulit ditolak. Ini adalah definisi dari laptop yang memprioritaskan <span class="font-bold text-teal-400">"performa di atas segalanya"</span> di kelas harganya.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6">
+        <p class="text-slate-500">Ulasan Interaktif dibuat berdasarkan data publik.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tab Logic
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.dataset.tab;
+
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tab) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Chart.js Logic
+            const ctx = document.getElementById('gamingChart').getContext('2d');
+            const gamingChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Valorant', 'Cyberpunk 2077', 'Genshin Impact'],
+                    datasets: [{
+                        label: 'Rata-rata FPS',
+                        data: [200, 55, 60],
+                        backgroundColor: [
+                            'rgba(20, 184, 166, 0.7)', // teal-500
+                            'rgba(245, 158, 11, 0.7)', // amber-500
+                            'rgba(59, 130, 246, 0.7)' // blue-500
+                        ],
+                        borderColor: [
+                            'rgba(13, 148, 136, 1)', // teal-600
+                            'rgba(217, 119, 6, 1)', // amber-600
+                            'rgba(37, 99, 235, 1)' // blue-600
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#e2e8f0' // slate-200
+                            },
+                            ticks: {
+                                color: '#475569' // slate-600
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                             ticks: {
+                                color: '#1e293b', // slate-800
+                                font: {
+                                    size: window.innerWidth < 640 ? 12 : 14,
+                                    weight: '600'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleFont: {
+                                size: 16
+                            },
+                            bodyFont: {
+                                size: 14
+                            },
+                            padding: 12,
+                            cornerRadius: 6,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        let settings = '';
+                                        if (context.label === 'Valorant') {
+                                            settings = 'Setting: High, >200 FPS';
+                                        } else if (context.label === 'Cyberpunk 2077') {
+                                            settings = 'Setting: Medium-High, DLSS Quality, ~55 FPS';
+                                        } else {
+                                            settings = 'Setting: Highest, 60 FPS';
+                                        }
+                                        label = settings;
+                                    }
+                                    return label;
+                                },
+                                title: function(context) {
+                                    return context[0].label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            window.addEventListener('resize', () => {
+                gamingChart.options.scales.y.ticks.font.size = window.innerWidth < 640 ? 12 : 14;
+                gamingChart.update();
+            });
+        });
+    </script>
+
+</body>
+</html>
